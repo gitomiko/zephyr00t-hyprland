@@ -65,7 +65,7 @@ Core Hyprland configuration is intentionally kept local and machine-specific.
 This repository is not intended as a drop-in configuration or starter kit.  
 It reflects a personal workflow and evolves slowly through daily use.
 
-Feel free to explore, adapt, or borrow ideas — but treat the window manager layer with care.
+Feel free to explore, adapt, or borrow ideas — thank you :)
 
 ---
 
