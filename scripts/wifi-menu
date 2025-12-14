@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Get Wi-Fi list (machine readable)
+wifi_list=$(nmcli -t -f IN-USE,SSID,SECURITY,SIGNAL device wifi list)
+
+# Build menu: show signal, keep SSID safe
+menu=$(echo "$wifi_list" | awk -F: '{
+  inuse = ($1=="*") ? "" : " ";
+  signal = ($4 == "") ? "?" : $4 "%";
+  printf "%s %3s :: %s\n", inuse, signal, $2
+}')
+
+# Pick network
+chosen=$(echo "$menu" | \
+  wofi --dmenu \
+       --prompt "Wi-Fi" \
+       --width 360 \
+       --lines 8)
+
+[ -z "$chosen" ] && exit
+
+# Extract SSID safely (after ::)
+ssid=$(echo "$chosen" | sed 's/^.*:: //')
+
+# Connect using terminal (hold for password)
+setsid kitty --hold -e nmcli device wifi connect "$ssid" --ask >/dev/null 2>&1 &

@@ -1,0 +1,122 @@
+{  
+  "layer": "top",
+  "exlusive": true,
+  "passthrough": false,
+  "position": "top",
+  "height": 30,
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 35,
+    "separate-outputs": true,
+    "tooltip": false
+  },
+
+
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  
+    "custom/arch": {
+    "format": "  ",
+    "on-click": "wofi --show drun",
+    "tooltip": false
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "󰈙",
+      "4": "󰝚",
+      "5": "",
+      "default": "●"
+    }
+  },
+
+  "modules-center": [
+    "clock"
+  ],
+  
+  "clock": {
+    "format": "{:%A, %d %B %Y | %H:%M:%S}",
+    "interval": 1,
+    "tooltip": false
+  },
+
+
+  "modules-right": [
+    "tray",
+    "custom/resources",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "custom/power"
+  ],
+
+  "custom/resources": {
+    "exec": "~/.local/bin/waybar-resources",
+    "interval": 2,
+    "return-type": "json",
+    "tooltip": false
+  },
+
+
+  "network": {
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤮",
+    "on-click": "~/.local/bin/wifi-menu",
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "format": "  {volume}%",
+    "format-muted": " ",
+    "on-click": "pavucontrol",
+    "tooltip": false
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": " {percent}%",
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-",
+    "tooltip": false
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-icons": {
+      "charging": "󰂄",
+      "plugged": "",
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰂃", 
+        "󰂄"
+      ]
+    },
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "interval": 30,
+    "tooltip": false
+  },
+  
+  "custom/power": {
+     "format": "",
+     "tooltip": "Power",
+     "on-click": "/home/zephyr00t/.local/bin/powermenu"
+  }
+}

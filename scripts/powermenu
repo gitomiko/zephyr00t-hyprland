@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# Waybar-safe environment
+export PATH="$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin"
+
+choice=$(printf "⏻ Shutdown\n🔄 Reboot\n🌙 Suspend\n🔒 Lock\n🚪 Logout" | \
+  wofi --dmenu \
+       --prompt "Power" \
+       --width 200 \
+       --lines 5)
+
+case "$choice" in
+  "⏻ Shutdown")
+    systemctl poweroff
+    ;;
+  "🔄 Reboot")
+    systemctl reboot
+    ;;
+  "🌙 Suspend")
+    systemctl suspend
+    ;;
+  "🔒 Lock")
+    hyprlock 2>/dev/null || swaylock
+    ;;
+  "🚪 Logout")
+    hyprctl dispatch exit
+    ;;
+  *)
+    exit 0
+    ;;
+esac
+

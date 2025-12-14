@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# === CPU SAMPLE (accurate) ===
+read cpu user nice system idle iowait irq softirq steal guest guest_nice < /proc/stat
+prev_idle=$((idle+iowait))
+prev_total=$((user+nice+system+idle+iowait+irq+softirq+steal))
+
+sleep 0.2
+
+read cpu user nice system idle iowait irq softirq steal guest guest_nice < /proc/stat
+idle_now=$((idle+iowait))
+total_now=$((user+nice+system+idle+iowait+irq+softirq+steal))
+
+diff_idle=$((idle_now - prev_idle))
+diff_total=$((total_now - prev_total))
+cpu_usage=$(( (100 * (diff_total - diff_idle)) / diff_total ))
+
+# === MEMORY ===
+mem_used=$(free -m | awk '/Mem:/ {printf "%.1f", $3/1024}')
+mem_total=$(free -m | awk '/Mem:/ {printf "%.1f", $2/1024}')
+mem_percent=$(awk "BEGIN {printf \"%d\", ($mem_used/$mem_total)*100}")
+
+# === STATE LOGIC ===
+class="normal"
+
+if [ "$cpu_usage" -ge 85 ]; then
+  class="critical"
+elif [ "$cpu_usage" -ge 65 ]; then
+  class="warning"
+elif [ "$mem_percent" -ge 80 ]; then
+  class="memory"
+fi
+
+# === OUTPUT JSON ===
+printf '{"text":" %d%%   %.1fG","class":"%s"}\n' \
+  "$cpu_usage" "$mem_used" "$class"

@@ -1,0 +1,56 @@
+/* ======================
+   WOFI METAL – GTK SAFE
+   ====================== */
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 14px;
+  color: #e6e6e6;
+}
+
+/* Window */
+window {
+  background-color: rgba(20, 20, 24, 0.96);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Outer container */
+#outer-box {
+  padding: 12px;
+}
+
+/* Input bar */
+#input {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Entry */
+#entry {
+  padding: 6px 8px;
+  border-radius: 8px;
+}
+
+/* Selected entry */
+#entry:selected {
+  background-color: rgba(255, 245, 99, 0.22);
+  color: #111;
+}
+
+/* Icon */
+#entry image {
+  margin-right: 8px;
+}
+
+/* Scrollbar */
+scrollbar {
+  background: none;
+}
+
+scrollbar slider {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}

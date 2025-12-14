@@ -1,0 +1,10 @@
+show=drun
+prompt=Search
+width=40%
+height=35%
+lines=8
+line_wrap=off
+location=center
+term=foot
+allow_images=true
+hide_scroll=true
