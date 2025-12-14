@@ -14,22 +14,26 @@ Core Hyprland configuration is intentionally kept local and machine-specific.
 
 ## Repository Structure
 
-zephyr00t-hyprland/
-├── waybar/
-│ ├── config
-│ └── style.css
-├── wofi/
-│ ├── config
-│ └── style.css
-├── scripts/
-│ ├── powermenu
-│ ├── wifi-menu
-│ └── waybar-resources
-├── screenshots/
-│ ├── desktop.png
-│ ├── waybar.png
-│ └── wifi-menu.png
-└── README.md
+```text
+├── LICENSE
+├── README.md
+├── screenshots
+│   ├── desktop.png
+│   ├── waybar1.png
+│   ├── waybar2.png
+│   ├── waybar3.png
+│   └── wifi-menu.png
+├── scripts
+│   ├── powermenu
+│   ├── waybar-resources
+│   └── wifi-menu
+├── waybar
+│   ├── config
+│   └── style.css
+└── wofi
+    ├── config
+    └── style.css
+```
 
 
 ---
@@ -67,4 +71,4 @@ Feel free to explore, adapt, or borrow ideas — but treat the window manager la
 
 ## License
 
-Creative Commons Zero v1.0
+Creative Commons Zero v1.0 Universal
